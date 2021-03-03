@@ -8,3 +8,11 @@
   grid-template-rows: auto 1fr;
   grid-template-columns: auto minmax(auto, 260px) 1fr minmax(auto, 260px);
 }
+
+/* EditorHeader */
+
+.editorHeader {
+  grid-area: h;
+  background-color: #b8d4ff;
+}
+

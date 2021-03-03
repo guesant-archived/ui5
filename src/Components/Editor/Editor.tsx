@@ -1,4 +1,5 @@
 import styles from "./Editor.module.css";
+import EditorHeader from "./EditorHeader";
 import { EditorContextProvider } from "./Hooks/EditorContextProvider";
 
 const Editor = () => {
@@ -7,6 +8,7 @@ const Editor = () => {
       <EditorContextProvider
         children={
           <>
+            <EditorHeader />
           </>
         }
       />
