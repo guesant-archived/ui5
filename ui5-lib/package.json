@@ -1,0 +1,23 @@
+{
+  "name": "@guesant/ui5-lib",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "tsc -p . --watch",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guesant/ui5.git"
+  },
+  "author": "Gabriel Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guesant/ui5/issues"
+  },
+  "homepage": "https://github.com/guesant/ui5#readme",
+  "dependencies": {
+    "typescript": "^4.2.3"
+  }
+}
