@@ -16,3 +16,11 @@
   background-color: #b8d4ff;
 }
 
+.editorHeader :global(.bx--number) {
+  width: 100%;
+}
+
+.editorHeader :global(.bx--number) input[type="number"] {
+  width: 100%;
+}
+

@@ -75,7 +75,6 @@ export const ModalNewProject: IModalComponent = ({ isOpen, setIsOpen }) => {
             <div key={dimensionKey} className={styles.gridHalf}>
               <NumberInput
                 label={labelText}
-                style={{ width: "100%" }}
                 placeholder={dimensionKey}
                 onFocus={(e) => e.target.select()}
                 value={newProjectData.model.sketch[dimensionKey] || 0}
