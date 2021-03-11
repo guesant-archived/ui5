@@ -31,6 +31,7 @@ const ModalItemExportProject: IHeaderModalItem = [
 const HeaderModals: IHeaderModalItem[] = [
   ModalItemNewProject,
   ModalItemOpenProject,
+  ModalItemExportProject,
 ];
 
 type IHeaderModalItem = [IModalComponent, SupportedHeaderModals];
@@ -48,6 +49,7 @@ const MenuItemOpenProject: IHeaderMenuItem = [
   { itemText: "Abrir" },
   "openProject",
 ];
+
 const MenuItemExportProject: IHeaderMenuItem = [
   { itemText: "Exportar Projeto" },
   "exportProject",
