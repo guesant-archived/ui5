@@ -51,7 +51,7 @@ const MenuItemOpenProject: IHeaderMenuItem = [
 ];
 
 const MenuItemExportProject: IHeaderMenuItem = [
-  { itemText: "Exportar Projeto" },
+  { hasDivider: true, itemText: "Exportar Projeto" },
   "exportProject",
   { strictProject: true },
 ];
