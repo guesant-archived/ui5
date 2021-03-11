@@ -8,10 +8,11 @@ import { createElement, Fragment, useContext } from "react";
 import styles from "./Editor.module.css";
 import { EditorContext } from "./Hooks/EditorContext";
 import { IModalComponent } from "./Modals/IModalComponent";
+import { ModalExportProject } from "./Modals/ModalExportProject";
 import { ModalNewProject } from "./Modals/ModalNewProject";
 import { ModalOpenProject } from "./Modals/ModalOpenProject";
 
-type SupportedHeaderModals = "openProject" | "newProject";
+type SupportedHeaderModals = "openProject" | "newProject" | "exportProject";
 
 /* Modals */
 
@@ -21,6 +22,11 @@ const ModalItemOpenProject: IHeaderModalItem = [
 ];
 
 const ModalItemNewProject: IHeaderModalItem = [ModalNewProject, "newProject"];
+
+const ModalItemExportProject: IHeaderModalItem = [
+  ModalExportProject,
+  "exportProject",
+];
 
 const HeaderModals: IHeaderModalItem[] = [
   ModalItemNewProject,
@@ -42,9 +48,16 @@ const MenuItemOpenProject: IHeaderMenuItem = [
   { itemText: "Abrir" },
   "openProject",
 ];
+const MenuItemExportProject: IHeaderMenuItem = [
+  { itemText: "Exportar Projeto" },
+  "exportProject",
+  { strictProject: true },
+];
+
 const HeaderMenuItems: IHeaderMenuItem[] = [
   MenuItemOpenProject,
   MenuItemNewProject,
+  MenuItemExportProject,
 ];
 
 type IHeaderMenuItem =
