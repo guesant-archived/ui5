@@ -31,6 +31,7 @@ export const ModalOpenProject: IModalComponent = ({ isOpen, setIsOpen }) => {
     <>
       <div style={{ display: "none" }}>
         <input
+          multiple
           type="file"
           ref={inputRef}
           onChange={(e) => setFiles(Array.from(e.target.files || []))}
