@@ -7,14 +7,14 @@ import { EditorContext } from "../Hooks/EditorContext";
 import { IModalComponent } from "./IModalComponent";
 import styles from "./ModalNewProject.module.css";
 
-const DEFAULT_PROJECT: IEditorProject = {
-  meta: { name: "Novo Projeto", selection: [] },
+const getDefaultProject = (): IEditorProject => ({
+  meta: { id: nanoid(), name: "Novo Projeto", selection: [] },
   model: {
     sketch: { width: 500, height: 420 },
     staticImages: [],
     fabricExported: { objects: [] },
   },
-};
+});
 
 export const ModalNewProject: IModalComponent = ({ isOpen, setIsOpen }) => {
   const [[idFieldName, idFieldDimensions]] = useState(() => [
@@ -24,7 +24,7 @@ export const ModalNewProject: IModalComponent = ({ isOpen, setIsOpen }) => {
   const { projects, updateProject, setCurrentProjectIndex } = useContext(
     EditorContext,
   );
-  const [newProjectData, setNewProjectData] = useState(DEFAULT_PROJECT);
+  const [newProjectData, setNewProjectData] = useState(getDefaultProject);
 
   function handleSubmit() {
     if (updateProject(projects.length, newProjectData)) {

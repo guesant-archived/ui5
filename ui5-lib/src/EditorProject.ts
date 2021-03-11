@@ -1,11 +1,13 @@
 import { Template, TemplateSchema } from "@fantastic-images/core";
 import { array, number, object, string, ObjectSchema } from "yup";
 import { IEditorProject } from "./IEditorProject";
+import { nanoid } from "nanoid";
 
 export const EditorProjectSchema: ObjectSchema<any> = TemplateSchema.shape({
   meta: object()
     .shape({
-      name: string().optional(),
+      id: string().default(() => nanoid()),
+      name: string().trim().optional(),
       selection: array()
         .of(object().shape({ ref: string(), index: number() }))
         .default(() => []),
