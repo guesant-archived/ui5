@@ -1,0 +1,14 @@
+.modalNewProject .grid {
+  display: grid;
+  padding: 0.5rem 0;
+  gap: 0.75rem 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gridHalf {
+  grid-column: span 1;
+}
+
+.gridFull {
+  grid-column: span 2;
+}
