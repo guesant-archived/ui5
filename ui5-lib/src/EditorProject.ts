@@ -23,4 +23,14 @@ export class EditorProject extends Template {
     }
     return null;
   }
+  static callbackParseTemplate = <T extends IEditorProject = IEditorProject>(
+    data: T,
+    callback: (data: T) => void,
+  ) => {
+    if (EditorProject.isValidTemplate(data)) {
+      callback(EditorProject.parseTemplate(data)! as any);
+      return true;
+    }
+    return false;
+  };
 }
