@@ -9,15 +9,22 @@ import styles from "./Editor.module.css";
 import { EditorContext } from "./Hooks/EditorContext";
 import { IModalComponent } from "./Modals/IModalComponent";
 import { ModalNewProject } from "./Modals/ModalNewProject";
+import { ModalOpenProject } from "./Modals/ModalOpenProject";
 
-type SupportedHeaderModals = "newProject";
+type SupportedHeaderModals = "openProject" | "newProject";
 
 /* Modals */
+
+const ModalItemOpenProject: IHeaderModalItem = [
+  ModalOpenProject,
+  "openProject",
+];
 
 const ModalItemNewProject: IHeaderModalItem = [ModalNewProject, "newProject"];
 
 const HeaderModals: IHeaderModalItem[] = [
   ModalItemNewProject,
+  ModalItemOpenProject,
 ];
 
 type IHeaderModalItem = [IModalComponent, SupportedHeaderModals];
@@ -30,7 +37,13 @@ const MenuItemNewProject: IHeaderMenuItem = [
   { itemText: "Novo" },
   "newProject",
 ];
+
+const MenuItemOpenProject: IHeaderMenuItem = [
+  { itemText: "Abrir" },
+  "openProject",
+];
 const HeaderMenuItems: IHeaderMenuItem[] = [
+  MenuItemOpenProject,
   MenuItemNewProject,
 ];
 
