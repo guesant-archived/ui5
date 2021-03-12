@@ -24,3 +24,11 @@
   width: 100%;
 }
 
+/* EditorToolbar */
+
+.editorToolbar {
+  grid-area: s;
+  height: 100%;
+  padding: 8px 6px;
+  background-color: #686a6e;
+}
