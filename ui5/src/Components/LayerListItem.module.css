@@ -1,0 +1,19 @@
+.layerListItem {
+  cursor: default;
+  user-select: none;
+  padding: 12px 0 12px 24px;
+  border: 1px solid transparent;
+}
+
+.layerListItem:hover:not(.selected),
+.layerListItem:active:not(.selected) {
+  border-color: blue;
+}
+
+.layerListItem.selected {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+.layerListItem.selected:hover {
+  border-color: white;
+}
