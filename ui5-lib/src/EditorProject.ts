@@ -1,7 +1,7 @@
 import { Template, TemplateSchema } from "@fantastic-images/core";
-import { array, number, object, string, ObjectSchema } from "yup";
-import { IEditorProject } from "./IEditorProject";
 import { nanoid } from "nanoid";
+import { array, number, object, ObjectSchema, string } from "yup";
+import { IEditorProject } from "./IEditorProject";
 
 export const EditorProjectSchema: ObjectSchema<any> = TemplateSchema.shape({
   meta: object()
