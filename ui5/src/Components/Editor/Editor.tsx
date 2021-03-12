@@ -1,6 +1,7 @@
 import styles from "./Editor.module.css";
 import EditorHeader from "./EditorHeader";
 import EditorLeft from "./EditorLeft";
+import EditorRight from "./EditorRight";
 import EditorToolbar from "./EditorToolbar";
 import { EditorContextProvider } from "./Hooks/EditorContextProvider";
 
@@ -13,6 +14,7 @@ const Editor = () => {
             <EditorHeader />
             <EditorToolbar />
             <EditorLeft />
+            <EditorRight />
           </>
         }
       />
