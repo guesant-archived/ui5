@@ -52,3 +52,36 @@
   background-color: white;
 }
 
+/* EditorLeft */
+
+.editorLeft {
+  grid-area: l;
+  color: white;
+  height: 100%;
+  display: flex;
+  background-color: #2b2e33;
+  flex-direction: column;
+}
+
+.editorLeft :global(.bx--tab-content) {
+  padding: 0;
+  height: 100%;
+}
+
+.editorLeft .projects {
+  height: 100%;
+}
+
+.editorLeft .projects .projectsList {
+  font-family: monospace;
+}
+
+.editorLeft .projects .projectsList .project {
+  background-color: rgba(114, 119, 128, 0.21);
+}
+
+.editorLeft .projects .projectsList .project .projectHeader {
+  padding: 11px;
+  user-select: none;
+  cursor: default;
+}
