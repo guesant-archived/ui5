@@ -35,4 +35,14 @@ export class EditorProject extends Template {
     }
     return false;
   };
+  static isSelected = (project: IEditorProject) => (
+    ref: "static" | "object",
+    idx: number,
+  ) => {
+    return (
+      project.meta?.selection.find(
+        ({ index: iIndex, ref: iRef }) => iIndex === idx && iRef === ref,
+      ) !== undefined
+    );
+  };
 }
