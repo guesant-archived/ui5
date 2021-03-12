@@ -2,6 +2,7 @@ import { Tab, Tabs } from "carbon-components-react";
 import { useContext } from "react";
 import styles from "./Editor.module.css";
 import { EditorLeftObjectsList } from "./EditorLeftObjectsList";
+import { EditorLeftStaticList } from "./EditorLeftStaticList";
 import { EditorContext } from "./Hooks/EditorContext";
 
 const getModeFromEvent = (event: React.MouseEvent) =>
@@ -35,9 +36,19 @@ const EditorLeft = () => {
                     </div>
                     <div>
                       <ul>
+                        <EditorLeftStaticList
+                          position="front"
+                          project={currentProject}
+                          handleClick={hClick("static")}
+                        />
                         <EditorLeftObjectsList
                           project={currentProject}
                           handleClick={hClick("object")}
+                        />
+                        <EditorLeftStaticList
+                          position="back"
+                          project={currentProject}
+                          handleClick={hClick("static")}
                         />
                       </ul>
                     </div>
