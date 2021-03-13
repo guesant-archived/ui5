@@ -1,7 +1,7 @@
 import { TextInput } from "carbon-components-react";
+import immer from "immer";
 import { nanoid } from "nanoid";
-import { useState } from "react";
-import { useContext } from "react";
+import { Fragment, useCallback, useContext, useEffect, useState } from "react";
 import styles from "./Editor.module.css";
 import { EditorContext } from "./Hooks/EditorContext";
 
@@ -23,6 +23,38 @@ const EditorRightProjectID = () => {
   );
 };
 
+const EditorRightProjectName = () => {
+  const [[idFieldProjectName]] = useState(() => [nanoid()]);
+  const [tempProjectName, setTempProjectName] = useState("");
+  const { currentProject, updateCurrentProject } = useContext(EditorContext);
+
+  useEffect(() => {
+    setTempProjectName(currentProject?.meta?.name || "");
+  }, [currentProject]);
+
+  return (
+    <>
+      <div>
+        <TextInput
+          labelText="Nome"
+          value={tempProjectName}
+          id={"id" + idFieldProjectName}
+          onFocus={(e) => e.target.select()}
+          onChange={(e) => setTempProjectName(e.target.value)}
+          onBlur={(e) => {
+            setTempProjectName(e.target.value.trim());
+            updateCurrentProject(
+              immer(currentProject!, (draft) => {
+                draft.meta!.name = e.target.value.trim();
+              }),
+            );
+          }}
+        />
+      </div>
+    </>
+  );
+};
+
 const EditorRightProject = () => {
   const { currentProject } = useContext(EditorContext);
   return (
@@ -31,6 +63,7 @@ const EditorRightProject = () => {
         <>
           <div className={styles.editProject}>
             <EditorRightProjectID />
+            <EditorRightProjectName />
           </div>
         </>
       )}
