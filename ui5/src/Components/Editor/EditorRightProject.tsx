@@ -55,6 +55,58 @@ const EditorRightProjectName = () => {
   );
 };
 
+// Dimensions
+
+const DimensionWidth = { label: "Width", key: "width" } as const;
+const DimensionHeight = { label: "Height", key: "height" } as const;
+
+const Dimensions = [DimensionWidth, DimensionHeight] as const;
+
+// End Dimensions
+
+const EditorRightProjectDimensions = () => {
+  const [[idFieldDimensions]] = useState(() => [nanoid()]);
+  const { currentProject, updateCurrentProject } = useContext(EditorContext);
+
+  const updateProjectDimension = useCallback(
+    (key: "width" | "height", value: number | string) => {
+      if (currentProject) {
+        updateCurrentProject(
+          immer(currentProject, (draft) => {
+            draft.model.sketch[key] = Math.max(Math.floor(+value) || 0, 0);
+          }),
+        );
+      }
+    },
+    [currentProject, updateCurrentProject],
+  );
+
+  return (
+    <>
+      <div className={styles.editProjectDimensions}>
+        {Dimensions.map(({ label, key }) => (
+          <Fragment
+            key={key}
+            children={
+              <TextInput
+                min={0}
+                step={1}
+                labelText={label}
+                id={"id" + idFieldDimensions + key}
+                onFocus={(e) => e.target.select()}
+                onChange={(e) => {
+                  updateProjectDimension(key, +e.target.value);
+                }}
+                value={currentProject!.model.sketch[key] ?? 0}
+              />
+            }
+          />
+        ))}
+      </div>
+    </>
+  );
+};
+
 const EditorRightProject = () => {
   const { currentProject } = useContext(EditorContext);
   return (
@@ -64,6 +116,7 @@ const EditorRightProject = () => {
           <div className={styles.editProject}>
             <EditorRightProjectID />
             <EditorRightProjectName />
+            <EditorRightProjectDimensions />
           </div>
         </>
       )}

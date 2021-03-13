@@ -94,8 +94,19 @@
   background-color: #2b2e33;
 }
 
+.editorRight input {
+  width: 100%;
+  min-width: 100% !important;
+}
+
 .editorRight .editProject {
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
+}
+
+.editorRight .editProject .editProjectDimensions {
+  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
