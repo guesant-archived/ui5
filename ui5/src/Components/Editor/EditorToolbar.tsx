@@ -7,15 +7,19 @@ import {
 } from "./EditorToolbarItem";
 import { EditorContext } from "./Hooks/EditorContext";
 import { IModalComponent } from "./Modals/IModalComponent";
+import { ModalAddText } from "./Modals/ModalAddText";
 
-type SupportedToolbarModals = null;
+type SupportedToolbarModals = "addText";
 
 // Toolbar
 
 const ToolbarItemNull: IToolbarItem = [{}, null];
 
+const ToolbarItemAddText: IToolbarItem = [{ children: "T" }, "addText"];
+
 const ToolbarItems: IToolbarItem[] = [
   ToolbarItemNull,
+  ToolbarItemAddText,
 ];
 
 type IToolbarItem =
@@ -26,7 +30,13 @@ type IToolbarItem =
 
 // Modals
 
+const ModalItemAddText: IToolbarModalItem = [
+  ModalAddText,
+  "addText",
+  { validProject: true },
+];
 const ToolbarModals: IToolbarModalItem[] = [
+  ModalItemAddText,
 ];
 
 type IToolbarModalItem =
