@@ -2,7 +2,7 @@ import { IEditorProject } from "@guesant/ui5-lib";
 import { Modal, NumberInput, TextInput } from "carbon-components-react";
 import immer from "immer";
 import { nanoid } from "nanoid";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EditorContext } from "../Hooks/EditorContext";
 import { IModalComponent } from "./IModalComponent";
 import styles from "./ModalNewProject.module.css";
@@ -25,6 +25,12 @@ export const ModalNewProject: IModalComponent = ({ isOpen, setIsOpen }) => {
     EditorContext,
   );
   const [newProjectData, setNewProjectData] = useState(getDefaultProject);
+
+  useEffect(() => {
+    if (isOpen === false) {
+      setNewProjectData(getDefaultProject());
+    }
+  }, [isOpen]);
 
   function handleSubmit() {
     if (updateProject(projects.length, newProjectData)) {
