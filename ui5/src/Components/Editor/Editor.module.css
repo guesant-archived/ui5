@@ -93,3 +93,9 @@
   grid-area: r;
   background-color: #2b2e33;
 }
+
+.editorRight .editProject {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}

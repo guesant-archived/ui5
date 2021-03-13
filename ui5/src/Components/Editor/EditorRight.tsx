@@ -1,10 +1,19 @@
 import { Tab, Tabs } from "carbon-components-react";
-import { createElement, useContext, useEffect, useState } from "react";
+import { createElement, useState } from "react";
 import styles from "./Editor.module.css";
+import EditorRightProject from "./EditorRightProject";
 
 /* Tabs */
 
-const EditorRightTabs: IEditorRightTab[] = [];
+const TAB_PROJECT = 0;
+
+const TabProjects: IEditorRightTab = [
+  "Projeto",
+  TAB_PROJECT,
+  EditorRightProject,
+];
+
+const EditorRightTabs: IEditorRightTab[] = [TabProjects];
 
 type IEditorRightTab = [string, number, React.FC];
 
