@@ -1,4 +1,4 @@
-export class GenerateImage {
+export class ProjectAssets {
   static getPlaceholderImage = ({
     width,
     height,

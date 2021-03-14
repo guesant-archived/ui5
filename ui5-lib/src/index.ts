@@ -1,5 +1,5 @@
 export * from "./EditorProject";
-export * from "./GenerateImage";
+export * from "./ProjectAssets";
 export * from "./IEditorProject";
 export * from "./LoadProject";
 export * from "./React";
