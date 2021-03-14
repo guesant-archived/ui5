@@ -1,0 +1,13 @@
+.modalAddStaticImage .formWrapper {
+  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalAddStaticImage :global(.bx--form-item) {
+  display: block;
+}
+
+.modalAddStaticImage :global(.bx--label-description) {
+  display: none;
+}

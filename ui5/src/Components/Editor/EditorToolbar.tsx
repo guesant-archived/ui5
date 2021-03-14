@@ -7,18 +7,25 @@ import {
 } from "./EditorToolbarItem";
 import { EditorContext } from "./Hooks/EditorContext";
 import { IModalComponent } from "./Modals/IModalComponent";
+import { ModalAddStaticImage } from "./Modals/ModalAddStaticImage";
 import { ModalAddText } from "./Modals/ModalAddText";
 
-type SupportedToolbarModals = "addText";
+type SupportedToolbarModals = "addText" | "addStaticImage";
 
 // Toolbar
 
 const ToolbarItemNull: IToolbarItem = [{}, null];
 
+const ToolbarItemAddStaticImage: IToolbarItem = [
+  { children: "S" },
+  "addStaticImage",
+];
+
 const ToolbarItemAddText: IToolbarItem = [{ children: "T" }, "addText"];
 
 const ToolbarItems: IToolbarItem[] = [
   ToolbarItemNull,
+  ToolbarItemAddStaticImage,
   ToolbarItemAddText,
 ];
 
@@ -35,8 +42,16 @@ const ModalItemAddText: IToolbarModalItem = [
   "addText",
   { validProject: true },
 ];
+
+const ModalItemAddStaticImage: IToolbarModalItem = [
+  ModalAddStaticImage,
+  "addStaticImage",
+  { validProject: true },
+];
+
 const ToolbarModals: IToolbarModalItem[] = [
   ModalItemAddText,
+  ModalItemAddStaticImage,
 ];
 
 type IToolbarModalItem =
@@ -50,9 +65,9 @@ const EditorToolbar = () => {
 
   const {
     isOpened,
+    openedModal,
     setOpenedModal,
     openActionCreator,
-    openedModal,
   } = useModal<SupportedToolbarModals>();
 
   useEffect(() => {
