@@ -82,8 +82,14 @@
 
 .editorLeft .projects .projectsList .project .projectHeader {
   padding: 11px;
-  user-select: none;
   cursor: default;
+  user-select: none;
+}
+
+.editorLeft .projects .projectsList .project .projectHeader p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* EditorRight  */
