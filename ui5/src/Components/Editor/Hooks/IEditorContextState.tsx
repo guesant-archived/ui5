@@ -1,11 +1,3 @@
-import { IEditorProject, ISetter } from "@guesant/ui5-lib";
+import { useProjects } from "./useProjects";
 
-export type IEditorContextState = {
-  projects: IEditorProject[];
-  currentProject: IEditorProject | null;
-  currentProjectIndex: number;
-  updateProject: (projectIndex: number, data: IEditorProject) => boolean;
-  updateCurrentProject: (data: IEditorProject) => boolean;
-  setProjects: ISetter<IEditorContextState["projects"]>;
-  setCurrentProjectIndex: ISetter<number>;
-};
+export type IEditorContextState = ReturnType<typeof useProjects> & {};
