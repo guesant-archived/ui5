@@ -1,4 +1,5 @@
 import styles from "./Editor.module.css";
+import EditorFooter from "./EditorFooter";
 import EditorHeader from "./EditorHeader";
 import EditorLeft from "./EditorLeft";
 import EditorRight from "./EditorRight";
@@ -15,6 +16,7 @@ const Editor = () => {
             <EditorToolbar />
             <EditorLeft />
             <EditorRight />
+            <EditorFooter />
           </>
         }
       />

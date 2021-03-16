@@ -4,7 +4,7 @@
   display: grid;
   height: 100%;
   min-height: 100vh;
-  grid-template-areas: "h h h h" "s l c r";
+  grid-template-areas: "h h h h" "s l c r" "f f f f";
   grid-template-rows: auto 1fr;
   grid-template-columns: auto minmax(auto, 260px) 1fr minmax(auto, 260px);
 }
@@ -115,4 +115,26 @@
   gap: 0.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+/* EditorFooter */
+
+.editorFooter {
+  grid-area: f;
+  background-color: #b8d4ff;
+}
+
+.editorFooter {
+  color: rgba(43, 46, 51, 0.6);
+}
+
+.editorFooter a {
+  color: black;
+  text-decoration: none;
+}
+
+.editorFooter .editorFooterWrapper {
+  padding: 6px;
+  display: flex;
+  justify-content: flex-end;
 }
