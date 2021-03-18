@@ -100,6 +100,12 @@
   background-color: #2b2e33;
 }
 
+.editorRight .objectInspectorsWrapper {
+  row-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .editorRight input {
   width: 100%;
   min-width: 100% !important;

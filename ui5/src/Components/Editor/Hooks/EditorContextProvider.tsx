@@ -11,6 +11,7 @@ export const EditorContextProvider: React.FC = ({ children }) => {
     updateSelection,
     currentProjectIndex,
     updateCurrentProject,
+    updateSelectedObjects,
     setCurrentProjectIndex,
   } = useProjects<IEditorProject>([]);
 
@@ -24,6 +25,7 @@ export const EditorContextProvider: React.FC = ({ children }) => {
         updateSelection,
         currentProjectIndex,
         updateCurrentProject,
+        updateSelectedObjects,
         setCurrentProjectIndex,
       }}
       children={children}

@@ -6,6 +6,7 @@
     "@carbon/icons-react": "^10.26.0",
     "@fantastic-images/core": "link:/home/one/Documentos/dev/js/ui5/fantastic-images/core",
     "@guesant/ui5-lib": "link:../ui5-lib",
+    "@guesant/ui5-plugins": "link:../ui5-plugins",
     "@guesant/utils": "link:/home/one/Documentos/dev/github/guesant/js-utils",
     "@guesant/vector-awesome": "link:/home/one/Documentos/dev/github/guesant/vector-awesome/core",
     "@testing-library/jest-dom": "^5.11.4",

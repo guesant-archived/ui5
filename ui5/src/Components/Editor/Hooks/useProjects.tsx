@@ -1,6 +1,12 @@
-import { EditorProject, IEditorProject, useList } from "@guesant/ui5-lib";
+import {
+  EditorProject,
+  IEditorProject,
+  IUpdateSelectedObjects,
+  useList,
+} from "@guesant/ui5-lib";
 import immer from "immer";
 import { useCallback } from "react";
+import { getProjectObjects } from "./getProjectObjects";
 import { isValidSelectionIndex } from "./isValidSelectionIndex";
 import { IUpdateSelection } from "./IUpdateSelection";
 import { IUpdateSelectionOptions } from "./IUpdateSelectionOptions";
@@ -77,6 +83,26 @@ export const useProjects = <T extends IEditorProject = IEditorProject>(
     [currentProjectIndex, projects, updateProject],
   );
 
+  const updateSelectedObjects: IUpdateSelectedObjects = useCallback(
+    (handler) => {
+      if (!currentProject) return;
+      const selection = EditorProject.getProjectSelection(currentProject);
+      const _isSelected = (idx: number) =>
+        selection.find(({ index }) => index === idx) !== undefined;
+      selection.length &&
+        getProjectObjects(currentProject).length &&
+        updateCurrentProject(
+          immer(currentProject, (draft) => {
+            const fabricExported = draft.model.fabricExported;
+            fabricExported.objects = getProjectObjects(draft).map((i, idx) =>
+              _isSelected(idx) ? immer(i, handler) : i,
+            );
+          }),
+        );
+    },
+    [currentProject, updateCurrentProject],
+  );
+
   return {
     projects,
     setProjects,
@@ -85,6 +111,7 @@ export const useProjects = <T extends IEditorProject = IEditorProject>(
     updateSelection,
     currentProjectIndex,
     updateCurrentProject,
+    updateSelectedObjects,
     setCurrentProjectIndex,
   };
 };

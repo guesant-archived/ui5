@@ -1,11 +1,16 @@
+import { IEditorProject } from "@guesant/ui5-lib";
+import { strictEqualHandler } from "@guesant/utils";
 import { Tab, Tabs } from "carbon-components-react";
-import { createElement, useState } from "react";
+import { createElement, useContext, useEffect, useState } from "react";
 import styles from "./Editor.module.css";
+import EditorRightObjects from "./EditorRightObjects";
 import EditorRightProject from "./EditorRightProject";
+import { EditorContext } from "./Hooks/EditorContext";
 
 /* Tabs */
 
 const TAB_PROJECT = 0;
+const TAB_OBJECTS = 1;
 
 const TabProjects: IEditorRightTab = [
   "Projeto",
@@ -13,7 +18,13 @@ const TabProjects: IEditorRightTab = [
   EditorRightProject,
 ];
 
-const EditorRightTabs: IEditorRightTab[] = [TabProjects];
+const TabObjects: IEditorRightTab = [
+  "Objetos",
+  TAB_OBJECTS,
+  EditorRightObjects,
+];
+
+const EditorRightTabs: IEditorRightTab[] = [TabProjects, TabObjects];
 
 type IEditorRightTab = [string, number, React.FC];
 
@@ -21,6 +32,22 @@ type IEditorRightTab = [string, number, React.FC];
 
 const EditorRight = () => {
   const [currentTab, setCurrentTab] = useState(TAB_PROJECT);
+  const { currentProject, currentProjectIndex } = useContext(EditorContext);
+  const [prevProjectIndex, setPrevProjectIndex] = useState<number | null>(null);
+  const [prevProject, setPrevProject] = useState<IEditorProject | null>(null);
+
+  useEffect(() => {
+    if (
+      currentProjectIndex !== prevProjectIndex ||
+      strictEqualHandler(prevProject, currentProject, (i) => i?.meta?.selection)
+    ) {
+      setCurrentTab(
+        currentProject?.meta?.selection.length ? TAB_OBJECTS : TAB_PROJECT,
+      );
+    }
+    setPrevProject(currentProject);
+    setPrevProjectIndex(currentProjectIndex);
+  }, [prevProject, currentProject, prevProjectIndex, currentProjectIndex]);
 
   return (
     <div className={styles.editorRight}>
