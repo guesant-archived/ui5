@@ -6,7 +6,7 @@ import { IEditorProject } from "./IEditorProject";
 export const EditorProjectSchema: ObjectSchema<any> = TemplateSchema.shape({
   meta: object()
     .shape({
-      id: string().default(() => nanoid()),
+      id: string().default(() => nanoid(32)),
       name: string().trim().optional(),
       selection: array()
         .of(object().shape({ ref: string(), index: number() }))
