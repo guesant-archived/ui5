@@ -52,4 +52,15 @@ export class EditorProject extends Template {
     const { selection = [] } = project.meta! || {};
     return selection.filter((i) => (ref !== undefined ? i.ref === ref : true));
   };
+  static getSelectedObjects = (project: IEditorProject) => {
+    const {
+      model: {
+        fabricExported: { objects },
+      },
+    } = project;
+    const selection = EditorProject.getProjectSelection(project, "object");
+    return objects.filter(
+      (_, idx) => selection.find(({ index }) => index === idx) !== undefined,
+    );
+  };
 }
