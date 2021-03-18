@@ -15,7 +15,8 @@ const EditorLeft = () => {
 
   const hClick = (ref: "static" | "object") => (idx: number) => (
     event: React.MouseEvent,
-  ) => updateSelection(getModeFromEvent(event), ref, idx);
+  ) =>
+    updateSelection(getModeFromEvent(event), ref, idx, { staticSorted: true });
 
   return (
     <div className={styles.editorLeft}>
