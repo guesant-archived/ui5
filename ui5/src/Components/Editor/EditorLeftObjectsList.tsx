@@ -13,9 +13,9 @@ export const EditorLeftObjectsList: React.FC<ObjectsListProps> = ({
   ...props
 }) => (
   <>
-    {project.model.fabricExported.objects.map(({ type }, idx) => (
+    {project.model.fabricExported.objects.map(({ type, ...i }, idx) => (
       <LayerListItem
-        key={idx}
+        key={i.meta?.id ?? idx}
         children={type ?? "Objeto"}
         onClick={handleClick?.(idx)}
         isSelected={EditorProject.isSelected(project)("object", idx)}
