@@ -45,4 +45,11 @@ export class EditorProject extends Template {
       ) !== undefined
     );
   };
+  static getProjectSelection = (
+    project: IEditorProject,
+    ref?: "static" | "object",
+  ) => {
+    const { selection = [] } = project.meta! || {};
+    return selection.filter((i) => (ref !== undefined ? i.ref === ref : true));
+  };
 }
