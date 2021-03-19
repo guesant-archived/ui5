@@ -7,6 +7,7 @@ export const EditorContextProvider: React.FC = ({ children }) => {
     projects,
     setProjects,
     updateProject,
+    removeProject,
     currentProject,
     updateSelection,
     currentProjectIndex,
@@ -20,6 +21,7 @@ export const EditorContextProvider: React.FC = ({ children }) => {
       value={{
         projects,
         setProjects,
+        removeProject,
         updateProject,
         currentProject,
         updateSelection,

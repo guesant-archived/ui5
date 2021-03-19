@@ -4,6 +4,7 @@ import {
   IUpdateSelectedObjects,
   useList,
 } from "@guesant/ui5-lib";
+import { Number as NumberUtils } from "@guesant/utils";
 import immer from "immer";
 import { useCallback } from "react";
 import { getProjectObjects } from "./getProjectObjects";
@@ -37,6 +38,24 @@ export const useProjects = <T extends IEditorProject = IEditorProject>(
     (data: T) =>
       EditorProject.callbackParseTemplate(data, (i) => updateCurrentItem(i)),
     [updateCurrentItem],
+  );
+
+  const removeProject = useCallback(
+    (projectIndex: number) => {
+      const arrayProjects = projects.filter((_, idx) => idx !== projectIndex);
+      setProjects(arrayProjects);
+      setCurrentProjectIndex(
+        NumberUtils.minMax(
+          0,
+          arrayProjects.length - 1,
+        )(
+          projectIndex < currentProjectIndex
+            ? currentProjectIndex
+            : currentProjectIndex - (projects.length - arrayProjects.length),
+        ),
+      );
+    },
+    [currentProjectIndex, projects, setCurrentProjectIndex, setProjects],
   );
 
   const updateSelection: IUpdateSelection = useCallback(
@@ -106,6 +125,7 @@ export const useProjects = <T extends IEditorProject = IEditorProject>(
   return {
     projects,
     setProjects,
+    removeProject,
     updateProject,
     currentProject,
     updateSelection,
